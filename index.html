@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Array</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <!-- <h1>Hi</h1> -->
+    <h1 class="text-center my-3">Custom Array Application</h1>
+    <h5 class="text-center">Built By : <a href="https://twitter.com/PanesarRishabh" target="_blank">Rishabh Panesar</a></h5>
+    <form id="form">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="form-floating">
+                    <input type="text" id="arrayInput" class="form-control" placeholder="1, 3, 4, 5">
+                    <label for="arrayInput">Enter Items (Ex: 1,2,3,...)</label>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 gx-5 px-2">
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-success w-75" id="createBtn">Create Array</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="pushBtn">Push ()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="popBtn">Pop ()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="topBtn">Top ()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="printArrBtn">Print Array()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="printReverseBtn">Print Reverse Array()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-primary w-75" id="checkSizetBtn">Check Size ()</button>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center my-2">
+                <button class="btn btn-danger w-75" id="clearOutputBtn">Clear Output ()</button>
+            </div>
+        </div>
+    </form>
+    <div class="container-fluid bg-secondary text-white">
+        <h1 class="text-center">Your Output will be shown here</h1>
+        <div class="container d-flex flex-column justify-content-center align-item-center" id="outputContainer">
+            
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // let MyArray = function () {
+    //     Object.defineProperty(this, 'length', {
+    //         value:0,
+    //         writable:true,
+    //         enumerable:false
+    //     })
+    //     this.length = arguments.length;
+    //     for(let i = 0; i < arguments.length; i++) {
+    //         this[i] = arguments[i];
+    //     }
+    // }
+
+    // let arr = new MyArray();
+    // MyArray.prototype.push = function (x) {
+    //     this.length++;
+    //     this[this.length-1] = x;
+    //     // console.log(this.length);
+    //     // console.log(this);
+    // }
+
+    // MyArray.prototype.pop = function () {
+    //     let popped = this[this.length-1];
+    //     delete this[this.length-1];
+    //     this.length = this.length - 1;
+    //     // console.log(this);
+    //     return popped;
+    // }
+
+    // MyArray.prototype.top = function () {
+    //     // console.log(this[this.length-1]);
+    //     return this[this.length-1];
+    // }
+
+    // MyArray.prototype.print = function () {
+    //     let str = '';
+    //     for(let i = 0; i < this.length; i++) {
+    //         if(i == this.length - 1) {
+    //             str += this[i];
+    //         }
+    //         else {
+    //             str += this[i] + ', ';
+    //         }
+    //     }
+    //     console.log(str);
+    //     return str;
+    // }
+
+    // MyArray.prototype.printReverse = function () {
+    //     let str = '';
+    //     for(let i = this.length-1; i >= 0; i--) {
+    //         if(i==0) {
+    //             str += this[i];
+    //         }
+    //         else {
+    //             str += this[i] + ', ';
+    //         }
+    //     }
+    //     console.log(str);
+    //     return str;
+    // }
+
+    // MyArray.prototype.size = function () {
+    //     return this.length;
+    // }
+
+    // MyArray.prototype.isEmpty = function () {
+    //     return this.length == 0;
+    // }
+
+
+    // let createBtn = document.getElementById('createBtn');
+    // let form = document.querySelector('#form');
+
+    // let outputContainer = document.getElementById('outputContainer');
+
+    // createBtn.addEventListener('click', function() {
+    //     // console.log('Hi!');
+    //     // console.log(form);
+    //     event.preventDefault();
+    //     let input = form.arrayInput.value;
+    //     if(input == '') return alert('Input cannot be empty');
+    //     input = input.trim().split(',');
+    //     // console.log(input);
+    //     arr = new MyArray(...input);
+    //     // console.log(arr);
+    //     let row = document.createElement('div');
+    //     row.classList = 'row';
+    //     let message = document.createElement('h5');
+    //     message.classList = 'text-center';
+    //     let str = '[ ';
+    //     for(let i = 0; i < arr.length; i++) {
+    //         if(i == arr.length-1) {
+    //             str += arr[i] + ' ]';
+    //         }
+    //         else {
+    //             str += arr[i]+ ', '
+    //         }
+    //     }
+    //     message.innerText = `Array Created -> ${str}`;
+    //     row.append(message);
+    //     outputContainer.append(row);
+    //     form.arrayInput.value = '';
+    //     // form.reset();
+    // })
+
+    // let pushBtn = document.getElementById('pushBtn');
+    // pushBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     let value = form.arrayInput.value;
+    //     let row = document.createElement('div');
+    //     row.classList = 'row';
+    //     let message = document.createElement('h5');
+    //     message.classList = 'text-center';
+    //     if(value !== '') {
+    //         arr.push(value);
+    //         message.innerText = `Pushed --> ${value}`;
+    //         row.append(message);
+    //         outputContainer.append(row);
+    //     }
+    //     else alert('Cannot push empty element in array');
+    //     form.arrayInput.value = '';
+    //     // console.log(arr);
+    // });
+
+    // let popBtn = document.getElementById('popBtn');
+    // popBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     let row = document.createElement('div');
+    //     row.classList = 'row';
+    //     let message = document.createElement('h5');
+    //     message.classList = 'text-center';
+    //     if(arr.length == 0) {
+    //         alert('Nothing to pop!');
+    //     }
+    //     else {
+    //         let popped = arr.pop();
+    //         message.innerText = `Popped --> ${popped}`;
+    //         row.append(message);
+    //         outputContainer.append(row);
+    //     }
+    //     form.arrayInput.value = '';
+    // });
+
+    // let topBtn = document.getElementById('topBtn');
+    // topBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     let row = document.createElement('div');
+    //     row.classList = 'row';
+    //     let message = document.createElement('h5');
+    //     message.classList = 'text-center';
+    //     if(arr.isEmpty()) {
+    //         alert('Array is Empty');
+    //     }
+    //     else {
+    //         let top = arr.top();
+    //         message.innerText = `Top --> ${top}`;
+    //         row.append(message);
+    //         outputContainer.append(row);
+    //     }
+    //     form.arrayInput.value = '';
+    // });
+
+    // let printArrBtn = document.getElementById('printArrBtn');
+    // printArrBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     let row = document.createElement('div');
+    //     row.classList = 'row';
+    //     let message = document.createElement('h5');
+    //     if(arr.isEmpty()) {
+    //         message.classList = 'text-warning text-center';
+    //         message.innerText = 'Array is Empty';
+    //         outputContainer.innerHTML = null;
+    //         outputContainer.append(message);
+    //     }
+    //     else {
+    //         let print = arr.print();
+    //         // message.classList = 'text-success';
+    //         message.classList = 'text-center';
+    //         message.innerText = `Print()--> [${print}]`;
+    //         row.append(message);
+    //         // outputContainer.innerHTML = null;
+    //         outputContainer.append(row);
+    //     }
+    //     form.arrayInput.value = '';
+    // });
+
+    // let printReverseBtn = document.getElementById('printReverseBtn');
+    // printReverseBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     let message = document.createElement('h5');
+    //     if(arr.isEmpty()) {
+    //         message.classList = 'text-warning text-center';
+    //         message.innerText = 'Array is Empty';
+    //         outputContainer.innerHTML = null;
+    //         outputContainer.append(message);
+    //     }
+    //     else {
+    //         let print = arr.printReverse();
+    //         // message.classList = 'text-success';
+    //         message.classList = 'text-center';
+    //         message.innerText = `PrintReverse()--> [${print}]`;
+    //         // outputContainer.innerHTML = null;
+    //         outputContainer.append(message);
+    //     }
+    //     form.arrayInput.value = '';
+    // });
+
+    // let clearOutputBtn = document.getElementById('clearOutputBtn');
+    // clearOutputBtn.addEventListener('click', function() {
+    //     event.preventDefault();
+    //     outputContainer.innerHTML = null;
+    //     form.arrayInput.value = '';
+    // })
+    // // let arr1 = new MyArray(1,2,55,12);
+    // // arr1.push(23);
+    // // arr1.push(39);
+    // // console.log(arr1.pop());
+    // // console.log(arr1);
+    // // console.log(arr1.top());
+    // // arr1.print();
+    // // arr1.printReverse();
+    // // arr1.push(69);
+    // // console.log(arr1);
+    // // console.log(arr1.size());
+</script>
+<script src="./index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
